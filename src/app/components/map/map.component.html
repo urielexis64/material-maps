@@ -8,7 +8,7 @@
       [zoom]="15"
     >
       <agm-marker
-        *ngFor="let marker of markers"
+        *ngFor="let marker of markers; let i = index"
         [latitude]="marker.lat"
         [longitude]="marker.lng"
       >
@@ -18,11 +18,27 @@
             {{ marker.desc }}
           </p>
           <div>
-            <button mat-raised-button color="primary">Edit</button>
-            <button mat-raised-button color="warn">Delete</button>
+            <button
+              mat-raised-button
+              (click)="openDialog(marker)"
+              color="primary"
+            >
+              Edit
+            </button>
+            <button mat-raised-button (click)="removeMarker(i)" color="warn">
+              Delete
+            </button>
           </div>
         </agm-info-window>
       </agm-marker>
     </agm-map>
   </mat-card-content>
 </mat-card>
+<button
+  (click)="removeAllMarkers()"
+  style="margin-top: 10px"
+  mat-raised-button
+  color="warn"
+>
+  Remove all
+</button>
