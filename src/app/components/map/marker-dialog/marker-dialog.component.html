@@ -1,0 +1,25 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" placeholder="Ex. My Marker" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea
+      rows="3"
+      matInput
+      formControlName="desc"
+      placeholder="This marker points to..."
+      >{{ data.desc }}</textarea
+    >
+  </mat-form-field>
+  <div>
+    <button (click)="saveChanges()" mat-raised-button color="primary">
+      Ok
+    </button>
+    <button (click)="onNoClick()" mat-raised-button color="accent">
+      Cancel
+    </button>
+  </div>
+</form>
